@@ -1,9 +1,9 @@
-array = [ [0, 2, 3],
-		  [0, 6, 7],
-		  [45, 7, 2] ]
+array = [[0, 2, 3], [0, 6, 7], [45, 7, 2]]
 
-#чтобы в первой строке небыло элемента = 0 (WORKING)
-def scan_on_zero(array):
+# чтобы в первой строке небыло элемента = 0 (WORKING)
+
+
+def scan_on_zero(a):
 	for i in range(len(array)):
 		i = 0
 		for j in range(len(array[i])):
@@ -14,7 +14,11 @@ def scan_on_zero(array):
 			else:
 				break
 		break
+
+
 scan_on_zero(array)
+
+
 
 
 # for i in range(3):
