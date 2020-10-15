@@ -1,16 +1,18 @@
-array = [[0, 2, 3], [0, 6, 7], [45, 7, 2]]
-
-# чтобы в первой строке небыло элемента = 0 (WORKING)
+import copy
+array = [[1, 5, 3], [2, 9, 7], [15, 6, 2]]
+n = 3
 
 
 def scan_on_zero(a):
-	for i in range(len(array)):
+
+	# чтобы в первой строке небыло элемента = 0 (WORKING)
+	for i in range(len(a)):
 		i = 0
-		for j in range(len(array[i])):
-			if array[i][0] == 0:
-				q = array[i]
-				array.remove(q)
-				array.append(q)
+		for j in range(len(a[i])):
+			if a[i][0] == 0:
+				q = a[i]  # сохраняем в переменную
+				a.remove(q)  # удаляем целую строку (содержимое строки сохраняется)
+				a.append(q)  # вставляем удалённую строку в конец
 			else:
 				break
 		break
@@ -20,39 +22,27 @@ scan_on_zero(array)
 
 
 
+def forward_motion(a):
+	b = copy.deepcopy(a)
 
-# for i in range(3):
-# 	for j in range(3):
-# 		if array[i][0] == 0:
-#
-#
+	q = 0
+	m = 0
+	i = 0
+	while i < n:
+		k = i
+		for j in range(n):
+			m = a[k+1][q] / a[q][q]
+			b[k+1][j] = a[k+1][j] - m * a[q][j]
+
+
+		i += 1
+
+forward_motion(array)
 
 
 
-	#print(array[i])
-#
-# a = 0
-# while a < 3:
-# 	i, j = a, a
-# 	a += 1
-#
-# 	e = []
-# 	for i in range(3):
-# 		e.clear()
-# 		c = array[i+1]
-# 		q = -(array[i + 1][j] / array[i][j])
-# 		for j in range(3):
-# 			w = array[i][j] * q
-# 			e.append(w)
-#
-# 		r = []
-# 		for y in range(3):
-# 			r.append(c[y] + e[y])
-# 		array.remove(array[i+1])
-# 		array.insert(i+1, r)
-#
-# 	print(e)
-# 	print(array)
+
+
 
 
 
