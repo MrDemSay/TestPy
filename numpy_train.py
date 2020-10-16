@@ -1,5 +1,5 @@
 import copy
-array = [[1, 5, 3], [2, 9, 7], [15, 6, 2]]
+array = [[1, 5, 3], [2, 4, 12], [5, 6, 2]]
 n = 3
 
 
@@ -23,21 +23,21 @@ scan_on_zero(array)
 
 
 def forward_motion(a):
-	b = copy.deepcopy(a)
-
-	q = 0
-	m = 0
 	i = 0
-	while i < n:
-		k = i
-		for j in range(n):
-			m = a[k+1][q] / a[q][q]
-			b[k+1][j] = a[k+1][j] - m * a[q][j]
+	j = 0
+	m = 0
+	for j in range(n):
+		i = j
+		for k in range(j+1, n):
+			m = a[k][j] / a[i][j]
+			a[k][j] = a[k][j] - m * a[i][j]
+			for c in range(k, n):
+				a[k][c] = a[k][c] - m * a[k-1][c]
 
 
-		i += 1
+	return a
 
-forward_motion(array)
+print(forward_motion(array))
 
 
 
