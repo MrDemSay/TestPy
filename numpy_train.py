@@ -31,7 +31,7 @@ def forward_motion(a, b):
 				a[j][i] = a[j][i] - d * a[k][i]
 			b[j] = b[j] - d * b[k]
 
-	for k in range(n-1, 0, -1):
+	for k in range(n-1, -1, -1):
 		d = 0
 		s = 0
 		for j in range(k, n):
